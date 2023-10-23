@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marck+Script&display=swap");
+
+:root {
+  font-size: calc(0.5vw + 1vh + 0.5vmin);
+  --body-bg: rgb(255, 245, 245);
+  --white: #fff;
+  --black: #333;
+  --ragazzi-color: lightsalmon;
+  --patricios-color: lightgreen;
+  --palihue-color: lightblue;
+  --jmolina-color: lightgoldenrodyellow;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  text-decoration: none;
+  list-style: none;
+  user-select: none;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  background: var(--body-bg);
+  color: var(--black);
+}
+
+#root {
+  width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 4px;
+}
+
+code,
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font: inherit;
+  color: inherit;
+  line-height: 1.35;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  font-family: "Poppins", sans-serif;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  padding: 0.5em 1em;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.left-container,
+.right-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 0;
+}
+
+.left-container {
+  width: 40%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+.main-board,
+.main-calculator,
+.main-payments {
+  padding: 1rem;
+  background-color: rgb(187, 187, 174);
+  border-radius: 0.5rem;
+}
+
+/*  BOARD     */
+
+.main-board {
+  width: 80%;
+}
+
+.board-row {
+  padding: 0.25rem;
+  margin: 0.25rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 30% 32% 20% 12% 10%;
+}
+
+.board-row.disabled *:not(span) {
+  display: none;
+}
+
+.board-row-sector {
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0.5rem;
+}
+
+.board-row select,
+.board-row input[type="number"] {
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0 0.5rem;
+  cursor: pointer;
+  height: 1.5rem;
+}
+
+.board-row select:focus,
+.board-row input[type="number"]:focus {
+  outline: none;
+  background: rgb(255, 255, 255, 0.6);
+}
+
+.board-row input[type="date"] {
+  width: 2ch;
+  background: transparent;
+  border: none;
+  margin: 0 0.5rem;
+  padding: 0;
+}
+
+.board-row input[type="date"]:focus {
+  border: 1px solid;
+  outline: none;
+  background: white;
+}
+
+.board-row-btn {
+  background: transparent;
+  border: none;
+  display: grid;
+  place-items: center;
+  width: max-content;
+  padding: 0;
+  cursor: pointer;
+}
+
+.board-row-btn img {
+  width: 1rem;
+}
+
+/*    CALC      */
+.main-calculator {
+  margin-top: 5rem;
+  width: 80%;
+}
+
+.calc-row {
+  padding: 0.25rem 1rem;
+  margin: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-row.total {
+  font-weight: bold;
+}
+
+
+/*    PAYMENTS      */
+.main-payments {
+  width: 95%;
+}
+
+.payment-filters {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+}
+
+.payment-filter-check {
+  display: none;
+}
+
+.payment-filter-label {
+  border: 1px solid transparent;
+  padding: 0 0.25rem;
+}
+
+.payment-filter-label.active {
+  border-bottom: 1px solid #888;
+}
+
+.payments-header {
+  display: grid;
+  grid-template-columns: 0.15fr 0.9fr 0.8fr 0.8fr 0.8fr 0.8fr;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.payment-row {
+  padding: 0.25rem;
+  margin: 0.25rem 0;
+  display: grid;
+  grid-template-columns: 0.25fr 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr;
+  align-items: center;
+}
+
+[data-sector="ragazzi"] {
+  background: var(--ragazzi-color);
+}
+
+[data-sector="patricios"] {
+  background: var(--patricios-color);
+}
+
+[data-sector="palihue"] {
+  background: var(--palihue-color);
+}
+
+[data-sector="jmolina"] {
+  background: var(--jmolina-color);
+}
+
+
+/*    HISTORY MENU      */
+.history-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 4vw;
+  width: 33vw;
+}
+
+.year-container {
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #555;
+}
+
+.year-container span:first-of-type,
+.year-container span:last-of-type {
+  font-size: 1.25rem;
+}
+
+.month-btn {
+  font-size: 0.5rem;
+  background: #aaa;
+}
+
+.month-btn.active {
+  background: #eee;
+}
+
+/*      HISTORY       */
+.history-header-month {
+  text-transform: uppercase;
+}
