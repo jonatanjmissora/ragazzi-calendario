@@ -90,7 +90,6 @@ const PaymentsHeader = () => {
 const PaymentsList = ({ sortedFilteredPayments, calcPayments, setCalcPayments }) => {
   return (
     <>
-    {calcPayments}
       {sortedFilteredPayments.map((payment) => (
         <PaymentRow
           key={payment.id}
@@ -120,11 +119,9 @@ const PaymentRow = ({ payment, calcPayments, setCalcPayments }) => {
     return calcPayments.some(calcPayment => calcPayment.id === payment.id)
   }
 
-  console.log(isPaymentInCalc())
-
   return (
     <div className="payment-row" data-sector={sector}>
-      <input type="checkbox" onChange={handleChange}/>
+      <input type="checkbox" onChange={handleChange} defaultChecked={isPaymentInCalc()}/>
       <span>{expiration}</span>
       <span>{sector}</span>
       <span>{rubro}</span>
