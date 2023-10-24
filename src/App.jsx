@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import { Main } from './components/Main'
-import { HistoryList } from './components/HistoryList'
+import { Main } from './pages/Main'
+import { HistoryList } from './pages/HistoryList'
 
 export const App = () => {
   return (
@@ -12,7 +12,6 @@ export const App = () => {
     </div>
   )
 }
-//    "eslint.codeActionsOnSave.rules": null,
 //          STYLE
 //  arreglar icono calendario
 //  checkbox
@@ -20,6 +19,5 @@ export const App = () => {
 
 //          LOGICA
 //  iconos del payment
-//  checkbox cuando selecciono, pierdo el calc
 //  history
 //  backend

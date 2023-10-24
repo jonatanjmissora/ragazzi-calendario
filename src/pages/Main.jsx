@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Board } from './Main/Board'
-import { Calculator } from './Main/Calculator'
-import { Payments } from './Main/Payments'
-import { History } from './Main/History'
+import { Board } from '../components/Main/Board'
+import { Calculator } from '../components/Main/Calculator'
+import { Payments } from '../components/Main/Payments'
+import { History } from '../components/Main/History'
 
 const CALC_PAYMENTS = [
   { sector: 'ragazzi', rubro: 'agua', amount: 1200 },
@@ -30,7 +30,7 @@ export const Main = () => {
       <div className="left-container">
         <Board setPayments={setPayments} />
         <Calculator calcPayments={calcPayments} />
-        <History />
+        <History/>
       </div>
       <div className="right-container">
         <Payments payments={payments} calcPayments={calcPayments} setCalcPayments={setCalcPayments} />

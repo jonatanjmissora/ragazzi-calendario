@@ -13,17 +13,20 @@ export const Payments = ({ payments, calcPayments, setCalcPayments }) => {
     a.expiration.localeCompare(b.expiration)
   )
 
+  const isHistoryLayout = payments[0]?.fechaPago !== undefined
+
   return (
     <div className="main-payments">
       <PaymentsFilter
         paymentFilter={paymentFilter}
         setPaymentFilter={setPaymentFilter}
       />
-      <PaymentsHeader />
+      <PaymentsHeader isHistoryLayout={isHistoryLayout}/>
       <PaymentsList
         sortedFilteredPayments={sortedFilteredPayments}
         calcPayments={calcPayments}
         setCalcPayments={setCalcPayments}
+        isHistoryLayout={isHistoryLayout}
       />
     </div>
   )
@@ -74,7 +77,7 @@ const PaymentsFilter = ({ paymentFilter, setPaymentFilter }) => {
   )
 }
 
-const PaymentsHeader = () => {
+const PaymentsHeader = ({ isHistoryLayout }) => {
   return (
     <div className="payments-header">
       <span></span>
@@ -82,12 +85,12 @@ const PaymentsHeader = () => {
       <span>sector</span>
       <span>rubro</span>
       <span>monto</span>
-      <span></span>
+      <span>{isHistoryLayout ? 'fecha pago' : ''}</span>
     </div>
   )
 }
 
-const PaymentsList = ({ sortedFilteredPayments, calcPayments, setCalcPayments }) => {
+const PaymentsList = ({ sortedFilteredPayments, calcPayments, setCalcPayments, isHistoryLayout }) => {
   return (
     <>
       {sortedFilteredPayments.map((payment) => (
@@ -96,13 +99,14 @@ const PaymentsList = ({ sortedFilteredPayments, calcPayments, setCalcPayments })
           payment={payment}
           calcPayments={calcPayments}
           setCalcPayments={setCalcPayments}
+          isHistoryLayout={isHistoryLayout}
         />
       ))}
     </>
   )
 }
 
-const PaymentRow = ({ payment, calcPayments, setCalcPayments }) => {
+const PaymentRow = ({ payment, calcPayments, setCalcPayments, isHistoryLayout }) => {
   const { sector, rubro, amount, expiration } = payment
 
   const handleChange = (event) => {
@@ -121,12 +125,12 @@ const PaymentRow = ({ payment, calcPayments, setCalcPayments }) => {
 
   return (
     <div className="payment-row" data-sector={sector}>
-      <input type="checkbox" onChange={handleChange} defaultChecked={isPaymentInCalc()}/>
+      {!isHistoryLayout ? <input type="checkbox" onChange={handleChange} defaultChecked={isPaymentInCalc()}/> : <div></div>}
       <span>{expiration}</span>
       <span>{sector}</span>
       <span>{rubro}</span>
       <span>{amount}</span>
-      <span>icons</span>
+      {!isHistoryLayout ? <span>icons</span> : <div></div>}
     </div>
   )
 }
